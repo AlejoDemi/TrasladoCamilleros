@@ -61,9 +61,6 @@ export const Doctor = () => {
                     label="Destino"
                     value={currency}
                     onChange={handleChange}
-                    SelectProps={{
-                        native: true,
-                    }}
                     helperText="Seleccione el area a donde se translada el paciente"
                 >
                     {areas.map((option) => (
@@ -95,10 +92,7 @@ export const Doctor = () => {
                     label="ID paciente"
                     value={currency}
                     onChange={handleChange}
-                    SelectProps={{
-                        native: true,
-                    }}
-                    helperText="Please select your currency"
+                    helperText="Ingrese el ID del paciente"
                     variant="filled"
                 >
                     {areas.map((option) => (
@@ -108,7 +102,7 @@ export const Doctor = () => {
                     ))}
                 </TextField>
 
-                <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                <FormLabel id="demo-row-radio-buttons-group-label">Nivel de urgencia del traslado</FormLabel>
                 <RadioGroup
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
