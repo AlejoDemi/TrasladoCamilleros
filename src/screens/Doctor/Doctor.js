@@ -1,34 +1,65 @@
 import  {useState} from 'react';
-import FormControl from '@mui/material/FormControl';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 
-const areas = [
+const listaOrigenesYDestino = [
     {
-        value: 'USD',
-        label: '$',
+        name: 'Pediatria',
     },
     {
-        value: 'EUR',
-        label: '€',
+        name: 'Cardiologia',
     },
     {
-        value: 'BTC',
-        label: '฿',
+        name: 'Cirujia',
     },
     {
-        value: 'JPY',
-        label: '¥',
+        name: 'Rayos',
+    },
+];
+
+const listaIDpaciente = [
+    {
+        name: '43573888',
+    },
+    {
+        name: '46739008',
+    },
+    {
+        name: '36789899',
+    },
+    {
+        name: '78900888',
+    },
+];
+
+const listaNombrePaciente = [
+    {
+        name: 'Justina Galarce',
+    },
+    {
+        name: 'Sofia Tartara',
+    },
+    {
+        name: 'Agustina Verschoor',
+    },
+    {
+        name: 'Maria Moroni Krause',
     },
 ];
 
 export const Doctor = () => {
-    const [currency, setCurrency] = useState('EUR');
+    const [origen, setOrigen] = useState();
+    const [destino, setDestino] = useState();
+    const [IDpaciente, setIDpaciente] = useState();
+    const [nombrePaciente, setNombrePaciente] = useState();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCurrency(event.target.value);
+        setOrigen(event.target.value);
+        setDestino(event.target.value);
+        setIDpaciente(event.target.value);
+        setNombrePaciente(event.target.value);
     };
 
     return (
@@ -45,13 +76,12 @@ export const Doctor = () => {
                     id="outlined-select-currency"
                     select
                     label="Origen"
-                    value={currency}
                     onChange={handleChange}
                     helperText="Seleccione el area desde la cual se translada el paciente"
                 >
-                    {areas.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
+                    {listaOrigenesYDestino.map((option) => (
+                        <MenuItem key={option.name} value={option.name}>
+                            {option.name}
                         </MenuItem>
                     ))}
                 </TextField>
@@ -59,14 +89,13 @@ export const Doctor = () => {
                     id="outlined-select-currency-native"
                     select
                     label="Destino"
-                    value={currency}
                     onChange={handleChange}
                     helperText="Seleccione el area a donde se translada el paciente"
                 >
-                    {areas.map((option) => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
+                    {listaOrigenesYDestino.map((option) => (
+                        <MenuItem key={option.name} value={option.name}>
+                            {option.name}
+                        </MenuItem>
                     ))}
                 </TextField>
             </div>
@@ -75,14 +104,13 @@ export const Doctor = () => {
                     id="filled-select-currency"
                     select
                     label="Nombere paciente"
-                    value={currency}
                     onChange={handleChange}
                     helperText="Ingrese el nombre del paciente"
                     variant="filled"
                 >
-                    {areas.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
+                    {listaNombrePaciente.map((option) => (
+                        <MenuItem key={option.name} value={option.name}>
+                            {option.name}
                         </MenuItem>
                     ))}
                 </TextField>
@@ -90,15 +118,14 @@ export const Doctor = () => {
                     id="filled-select-currency-native"
                     select
                     label="ID paciente"
-                    value={currency}
                     onChange={handleChange}
                     helperText="Ingrese el ID del paciente"
                     variant="filled"
                 >
-                    {areas.map((option) => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
+                    {listaIDpaciente.map((option) => (
+                        <MenuItem key={option.name} value={option.name}>
+                            {option.name}
+                        </MenuItem>
                     ))}
                 </TextField>
 

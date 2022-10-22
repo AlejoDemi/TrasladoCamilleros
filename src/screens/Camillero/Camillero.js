@@ -1,30 +1,9 @@
 import  {useState} from 'react';
-import FormControl from '@mui/material/FormControl';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
-import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import {Button, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import {InformationCard} from "./InformationCard";
 
-const areas = [
-    {
-        value: 'USD',
-        label: '$',
-    },
-    {
-        value: 'EUR',
-        label: '€',
-    },
-    {
-        value: 'BTC',
-        label: '฿',
-    },
-    {
-        value: 'JPY',
-        label: '¥',
-    },
-];
-
-export const Doctor = () => {
+export const Camillero = () => {
     const [currency, setCurrency] = useState('EUR');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,16 +22,14 @@ export const Doctor = () => {
 
             <div>
 
+                <InformationCard description={"paciente, id, medico q lo solicito, destino, origen"} codeUrgency={"numero de urgencia"} ></InformationCard>
 
-                <FormLabel id="demo-row-radio-buttons-group-label">Traslado solicitado</FormLabel>
-                <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                >
-                    <FormControlLabel value="1" control={<Radio />} label="Aceptar" />
-                    <FormControlLabel value="2" control={<Radio />} label="Rechazar" />
-                </RadioGroup>
+                <Button variant="contained" color="success">
+                    Aceptar
+                </Button>
+                <Button variant="outlined" color="error">
+                    Rechazar
+                </Button>
 
             </div>
         </Box>
