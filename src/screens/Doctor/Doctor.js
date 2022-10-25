@@ -70,6 +70,7 @@ export const Doctor = () => {
             }}
             noValidate
             autoComplete="off"
+            style={{width:"50%",margin:"auto"}}
         >
             <div>
                 <TextField
@@ -134,6 +135,7 @@ export const Doctor = () => {
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
+                    style={{ display:"flex"}}
                 >
                     <FormControlLabel value="1" control={<Radio />} label="1" />
                     <FormControlLabel value="2" control={<Radio />} label="2" />
