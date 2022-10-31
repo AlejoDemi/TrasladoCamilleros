@@ -24,13 +24,6 @@ export const Camillero = () => {
 
                 <InformationCard description={"paciente, id, medico q lo solicito, destino, origen"} codeUrgency={"numero de urgencia"} ></InformationCard>
 
-                <Button variant="contained" color="success">
-                    Aceptar
-                </Button>
-                <Button variant="outlined" color="error">
-                    Rechazar
-                </Button>
-
             </div>
         </Box>
     );

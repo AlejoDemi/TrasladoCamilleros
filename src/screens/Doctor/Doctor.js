@@ -87,7 +87,7 @@ export const Doctor = () => {
         >
             <div>
                 <TextField
-                    id="outlined-select-currency"
+                    id ="Origen"
                     select
                     label="Origen"
                     onChange={handleChange}
@@ -100,7 +100,7 @@ export const Doctor = () => {
                     ))}
                 </TextField>
                 <TextField
-                    id="outlined-select-currency-native"
+                    id="Destino"
                     select
                     label="Destino"
                     onChange={handleChange}
@@ -115,9 +115,9 @@ export const Doctor = () => {
             </div>
             <div>
                 <TextField
-                    id="filled-select-currency"
+                    id="Nombre paciente"
                     select
-                    label="Nombere paciente"
+                    label="Nombre paciente"
                     onChange={handleChange}
                     helperText="Ingrese el nombre del paciente"
                     variant="filled"
@@ -129,7 +129,7 @@ export const Doctor = () => {
                     ))}
                 </TextField>
                 <TextField
-                    id="filled-select-currency-native"
+                    id="Id paciente"
                     select
                     label="ID paciente"
                     onChange={handleChange}
