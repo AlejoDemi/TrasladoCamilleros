@@ -4,51 +4,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import axios from "axios";
-
-const listaOrigenesYDestino = [
-    {
-        name: 'Pediatria',
-    },
-    {
-        name: 'Cardiologia',
-    },
-    {
-        name: 'Cirujia',
-    },
-    {
-        name: 'Rayos',
-    },
-];
-
-const listaIDpaciente = [
-    {
-        name: '43573888',
-    },
-    {
-        name: '46739008',
-    },
-    {
-        name: '36789899',
-    },
-    {
-        name: '78900888',
-    },
-];
-
-const listaNombrePaciente = [
-    {
-        name: 'Justina Galarce',
-    },
-    {
-        name: 'Sofia Tartara',
-    },
-    {
-        name: 'Agustina Verschoor',
-    },
-    {
-        name: 'Maria Moroni Krause',
-    },
-];
+import {listaIDpaciente, listaNombrePaciente, listaOrigenesYDestino} from "./Arreglos";
 
 export const Doctor = () => {
     const [origen, setOrigen] = useState();

@@ -9,7 +9,7 @@ import {ChequeoDePaciente} from "./screens/Camillero/ChequeoDePaciente";
 function App() {
   return (
     <div className="App">
-        <ChequeoDePaciente/>
+        <TabsDoctor/>
 
     </div>
   );
