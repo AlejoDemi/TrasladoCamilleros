@@ -1,8 +1,9 @@
-import  {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import axios from "axios";
 
 const listaOrigenesYDestino = [
     {
@@ -54,6 +55,18 @@ export const Doctor = () => {
     const [destino, setDestino] = useState();
     const [IDpaciente, setIDpaciente] = useState();
     const [nombrePaciente, setNombrePaciente] = useState();
+    const [pacientes, setPacientes] = useState([]);
+
+    useEffect(()=>{
+        axios.get("http://localhost:8080/patients")
+            .then((res)=>{
+                console.log(res)
+                setPacientes(res)
+            })
+    },[])
+
+
+    console.log(pacientes)
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setOrigen(event.target.value);
