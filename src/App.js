@@ -4,19 +4,12 @@ import {Doctor} from "./screens/Doctor/Doctor";
 import {Camillero} from "./screens/Camillero/Camillero";
 import {TabsDoctor} from "./screens/Doctor/TabsDoctor";
 import {CamilleroSinNotificaciones} from "./screens/Camillero/CamilleroSinNotificaciones";
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import {ChequeoDePaciente} from "./screens/Camillero/ChequeoDePaciente";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path={"/*"} element={<TabsDoctor></TabsDoctor>}/>
-          <Route path={"/camillero"} element={<Camillero></Camillero>}/>
-        </Routes>
-
-      </BrowserRouter>
-        
+        <ChequeoDePaciente/>
 
     </div>
   );

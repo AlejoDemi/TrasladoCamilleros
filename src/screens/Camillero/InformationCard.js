@@ -8,10 +8,10 @@ import Typography from '@mui/material/Typography';
 
 export const InformationCard = ({description, imageSrc, codeUrgency}) => {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 400 }}>
             <CardMedia
                 component="img"
-                height="140"
+                height="180"
                 image={imageSrc}
                 alt= {codeUrgency}
             />
@@ -22,6 +22,13 @@ export const InformationCard = ({description, imageSrc, codeUrgency}) => {
                 <Typography variant="body2" color="text.secondary">
                     {description}
                 </Typography>
+
+                <Button variant="contained" color="success">
+                    Aceptar
+                </Button>
+                <Button variant="outlined" color="error">
+                    Rechazar
+                </Button>
             </CardContent>
         </Card>
     );
