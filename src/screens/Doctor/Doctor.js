@@ -17,8 +17,10 @@ export const Doctor = () => {
         axios.get("http://localhost:8080/patients")
             .then((res)=>{
                 console.log(res)
-                setPacientes(res)
-            })
+                setPacientes(res.data)
+            }).catch((error)=>{
+                console.log(error)
+        })
     },[])
 
 
@@ -32,6 +34,7 @@ export const Doctor = () => {
     };
 
     return (
+        pacientes &&
         <Box
             component="form"
             sx={{
@@ -78,7 +81,7 @@ export const Doctor = () => {
                     helperText="Ingrese el nombre del paciente"
                     variant="filled"
                 >
-                    {listaNombrePaciente.map((option) => (
+                    {pacientes.map((option) => (
                         <MenuItem key={option.name} value={option.name}>
                             {option.name}
                         </MenuItem>
