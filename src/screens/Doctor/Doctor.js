@@ -14,7 +14,7 @@ export const Doctor = () => {
     const [pacientes, setPacientes] = useState([]);
 
     useEffect(()=>{
-        axios.get("http://localhost:8080/patients")
+        axios.get("https://backcamilleros-production.up.railway.app/patients")
             .then((res)=>{
                 console.log(res)
                 setPacientes(res.data)
