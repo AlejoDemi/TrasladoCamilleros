@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import {Button, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import axios from "axios";
 import {listaIDpaciente, listaNombrePaciente, listaOrigenesYDestino} from "./Arreglos";
 
@@ -10,8 +10,8 @@ export const Doctor = () => {
     const [origen, setOrigen] = useState();
     const [destino, setDestino] = useState();
     const [IDpaciente, setIDpaciente] = useState();
-    const [nombrePaciente, setNombrePaciente] = useState();
     const [pacientes, setPacientes] = useState([]);
+    const [levelOfUrgency, setLevelOfUrgency] = useState([]);
 
     useEffect(()=>{
         axios.get("https://backcamilleros-production.up.railway.app/patients")
@@ -23,14 +23,40 @@ export const Doctor = () => {
         })
     },[])
 
+    const sendRequest = ()=>{
+        axios.post("https://backcamilleros-production.up.railway.app/request",
+        {
+            areaFrom : origen,
+            areaTo : destino,
+            patientId : IDpaciente,
+            status: "PENDING",
+            levelOfUrgency : levelOfUrgency
+        },{
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+            }
+        }
+        ).catch((error)=>{
+            console.log(error)
+        })
+    }
 
-    console.log(pacientes)
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+    const handleChangeOrigen = (event: React.ChangeEvent<HTMLInputElement>) => {
         setOrigen(event.target.value);
+    };
+
+    const handleChangeDestino = (event: React.ChangeEvent<HTMLInputElement>) => {
         setDestino(event.target.value);
+    };
+
+    const handleChangeIdPaciente = (event: React.ChangeEvent<HTMLInputElement>) => {
         setIDpaciente(event.target.value);
-        setNombrePaciente(event.target.value);
+    };
+
+    const handleChangeUrgency = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setLevelOfUrgency(event.target.value);
     };
 
     return (
@@ -49,7 +75,7 @@ export const Doctor = () => {
                     id ="Origen"
                     select
                     label="Origen"
-                    onChange={handleChange}
+                    onChange={handleChangeOrigen}
                     helperText="Seleccione el area desde la cual se translada el paciente"
                 >
                     {listaOrigenesYDestino.map((option) => (
@@ -62,7 +88,7 @@ export const Doctor = () => {
                     id="Destino"
                     select
                     label="Destino"
-                    onChange={handleChange}
+                    onChange={handleChangeDestino}
                     helperText="Seleccione el area a donde se translada el paciente"
                 >
                     {listaOrigenesYDestino.map((option) => (
@@ -77,42 +103,31 @@ export const Doctor = () => {
                     id="Nombre paciente"
                     select
                     label="Nombre paciente"
-                    onChange={handleChange}
+                    onChange={handleChangeIdPaciente}
                     helperText="Ingrese el nombre del paciente"
                     variant="filled"
                 >
                     {pacientes.map((option) => (
-                        <MenuItem key={option.name} value={option.name}>
-                            {option.name}
+                        <MenuItem key={option.id} value={option.id}>
+                            {option.name + "__________   " +option.id.slice(0,10)}
                         </MenuItem>
                     ))}
                 </TextField>
-                <TextField
-                    id="Id paciente"
-                    select
-                    label="ID paciente"
-                    onChange={handleChange}
-                    helperText="Ingrese el ID del paciente"
-                    variant="filled"
-                >
-                    {listaIDpaciente.map((option) => (
-                        <MenuItem key={option.name} value={option.name}>
-                            {option.name}
-                        </MenuItem>
-                    ))}
-                </TextField>
-
+    
                 <FormLabel id="demo-row-radio-buttons-group-label">Nivel de urgencia del traslado</FormLabel>
                 <RadioGroup
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
                     style={{ display:"flex"}}
+                    onChange={handleChangeUrgency}
                 >
-                    <FormControlLabel value="1" control={<Radio />} label="1" />
-                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                    <FormControlLabel value="3" control={<Radio />} label="3" />
+                    <FormControlLabel value="LOW" control={<Radio />} label="1" />
+                    <FormControlLabel value="MEDIUM" control={<Radio />} label="2" />
+                    <FormControlLabel value="HIGH" control={<Radio />} label="3" />
                 </RadioGroup>
+
+                <Button onClick={sendRequest}>SUBMIT</Button>
 
             </div>
         </Box>
