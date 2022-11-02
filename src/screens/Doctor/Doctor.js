@@ -7,8 +7,8 @@ import axios from "axios";
 import {listaIDpaciente, listaNombrePaciente, listaOrigenesYDestino} from "./Arreglos";
 
 export const Doctor = () => {
-    const [origen, setOrigen] = useState();
-    const [destino, setDestino] = useState();
+    const [origen, setOrigen] = useState("");
+    const [destino, setDestino] = useState("");
     const [IDpaciente, setIDpaciente] = useState();
     const [pacientes, setPacientes] = useState([]);
     const [levelOfUrgency, setLevelOfUrgency] = useState([]);
@@ -23,22 +23,30 @@ export const Doctor = () => {
         })
     },[])
 
+console.log(!!origen)
+
     const sendRequest = ()=>{
-        axios.post("https://backcamilleros-production.up.railway.app/request",
-        {
-            areaFrom : origen,
-            areaTo : destino,
-            patientId : IDpaciente,
-            status: "PENDING",
-            levelOfUrgency : levelOfUrgency
-        },{
-            headers: {
-                "Access-Control-Allow-Origin": "*",
+        if(!!IDpaciente){
+            axios.post("https://backcamilleros-production.up.railway.app/request",
+            {
+                areaFrom : !origen ? IDpaciente.room : origen,
+                areaTo : !destino ? IDpaciente.room : destino,
+                patientId : IDpaciente.id,
+                status: "PENDING",
+                levelOfUrgency : !levelOfUrgency ?  "LOW" : levelOfUrgency
+            },{
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                }
             }
+            ).then(()=>{
+                window.location.reload()
+            }).catch((error)=>{
+                console.log(error)
+            })
+            
         }
-        ).catch((error)=>{
-            console.log(error)
-        })
+        
     }
 
 
@@ -108,8 +116,8 @@ export const Doctor = () => {
                     variant="filled"
                 >
                     {pacientes.map((option) => (
-                        <MenuItem key={option.id} value={option.id}>
-                            {option.name + "__________   " +option.id.slice(0,10)}
+                        <MenuItem key={option} value={option}>
+                            {option.name + "___" +option.id.slice(0,10)}
                         </MenuItem>
                     ))}
                 </TextField>
