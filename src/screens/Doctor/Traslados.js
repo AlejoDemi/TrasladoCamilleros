@@ -25,36 +25,34 @@ export const Traslados = () => {
         })
     },[setTimeout(3000)])
 
+    const getColor=(urgency)=>{
+        if(urgency==="LOW")return "#4caf50"
+        else if(urgency==="MEDIUM")return "#ff9800"
+        return "#ef5350"
+    }
+
 
         return (
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Origen</TableCell>
-                    <TableCell align="right">Destino</TableCell>
-                    <TableCell align="right">Paciente</TableCell>
-                    <TableCell align="right">Urgencia</TableCell>
-                    <TableCell align="right">Status</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {solicitudes.map((row) => (
-                    <TableRow
-                      key={row.id}
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                      <TableCell component="th" scope="row">
-                        {row.areaFrom}
-                      </TableCell>
-                      <TableCell align="right">{row.areaTo}</TableCell>
-                      <TableCell align="right">{row.patientId}</TableCell>
-                      <TableCell align="right">{row.levelOfUrgency}</TableCell>
-                      <TableCell align="right">{row.status}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <div>
+                <div style={{display:"flex",width:"100%",background:"lightgrey",height:"50px",alignItems:"center"}}>
+                    <div style={{width:"20%"}}>ORIGEN</div>
+                    <div style={{width:"20%"}}>DESTINO</div>
+                    <div style={{width:"20%"}}>ID PACIENTE</div>
+                    <div style={{width:"20%"}}>STATUS</div>
+                    <div style={{width:"20%"}}>URGENCIA</div>
+                </div>
+                {solicitudes.map((s)=>{
+                            return(
+                                <div key={s.id} style={{display:"flex",width:"100%",background:getColor(s.levelOfUrgency),height:"50px",alignItems:"center"}}>
+                                    <div style={{width:"20%"}}>{s.areaFrom}</div>
+                                    <div style={{width:"20%"}}>{s.areaTo}</div>
+                                    <div style={{width:"20%"}}>{s.patientId}</div>
+                                    <div style={{width:"20%"}}>{s.status}</div>
+                                    <div style={{width:"20%"}}>{s.levelOfUrgency}</div>
+                                </div>
+                            )
+                        })}
+            </div>
+           
           );
 }
