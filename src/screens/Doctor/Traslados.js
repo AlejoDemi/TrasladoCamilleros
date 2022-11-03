@@ -26,9 +26,9 @@ export const Traslados = () => {
     },[setTimeout(3000)])
 
     const getColor=(urgency)=>{
-        if(urgency==="LOW")return "#4caf50"
-        else if(urgency==="MEDIUM")return "#ff9800"
-        return "#ef5350"
+        if(urgency==="LOW")return "#25ff2f"
+        else if(urgency==="MEDIUM")return "#fff200"
+        return "#ff2a22"
     }
 
 
