@@ -43,7 +43,7 @@ export const Traslados = () => {
                 </div>
                 {solicitudes.map((s)=>{
                             return(
-                                <div key={s.id} style={{display:"flex",width:"100%",background:getColor(s.levelOfUrgency),height:"50px",alignItems:"center"}}>
+                                <div key={s.id} style={{display:"flex",width:"100%",background:getColor(s.levelOfUrgency),height:"50px",alignItems:"center",border:"1px solid black"}}>
                                     <div style={{width:"20%"}}>{s.areaFrom}</div>
                                     <div style={{width:"20%"}}>{s.areaTo}</div>
                                     <div style={{width:"20%"}}>{s.patientId}</div>
