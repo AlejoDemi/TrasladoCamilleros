@@ -33,7 +33,7 @@ export const Traslados = () => {
 
 
         return (
-            <div>
+            <div style={{height:"80vh",overflowY:"auto",overflowX:"hidden"}}>
                 <div style={{display:"flex",width:"100%",background:"lightgrey",height:"50px",alignItems:"center"}}>
                     <div style={{width:"20%"}}>ORIGEN</div>
                     <div style={{width:"20%"}}>DESTINO</div>

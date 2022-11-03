@@ -12,6 +12,8 @@ export const Doctor = () => {
     const [IDpaciente, setIDpaciente] = useState();
     const [pacientes, setPacientes] = useState([]);
     const [levelOfUrgency, setLevelOfUrgency] = useState([]);
+    const [subAreaDest, setSubAreaDest] = useState([]);
+    const [subAreaOri, setSubAreaOri] = useState([]);
 
     useEffect(()=>{
         axios.get("https://backcamilleros-production.up.railway.app/patients")
@@ -29,8 +31,8 @@ console.log(!!origen)
         if(!!IDpaciente){
             axios.post("https://backcamilleros-production.up.railway.app/request",
             {
-                areaFrom : !origen ? IDpaciente.room : origen,
-                areaTo : !destino ? IDpaciente.room : destino,
+                areaFrom : !subAreaOri ? IDpaciente.room : subAreaOri,
+                areaTo : !subAreaDest ? IDpaciente.room : subAreaDest,
                 patientId : IDpaciente.id,
                 status: "PENDING",
                 levelOfUrgency : !levelOfUrgency ?  "LOW" : levelOfUrgency
@@ -67,12 +69,20 @@ console.log(!!origen)
         setLevelOfUrgency(event.target.value);
     };
 
+    const handleChangeSubAreaDest = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSubAreaDest(event.target.value);
+    };
+
+    const handleChangeSubAreaOri = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSubAreaOri(event.target.value);
+    };
+
     return (
         pacientes &&
         <Box
             component="form"
             sx={{
-                '& .MuiTextField-root': {m: 1, width: '100%',height:"100%"},
+                '& .MuiTextField-root': {m: 1, width: '100%',height:"80%"},
             }}
             noValidate
             autoComplete="off"
@@ -93,6 +103,20 @@ console.log(!!origen)
                     ))}
                 </TextField>
                 <TextField
+                    id="Sub Area Origen"
+                    select
+                    label="Seleccione la sub-area"
+                    onChange={handleChangeSubAreaOri}
+                    disabled={origen===""}
+                    helperText="Seleccione el subarea a donde se busca el paciente"
+                >
+                    {[1,2,3,4].map((index) => (
+                        <MenuItem key={index} value={origen.slice(0,3)+index}>
+                            {origen.slice(0,3)+index}
+                        </MenuItem>
+                    ))}
+                </TextField>
+                <TextField
                     id="Destino"
                     select
                     label="Destino"
@@ -102,6 +126,20 @@ console.log(!!origen)
                     {listaOrigenesYDestino.map((option) => (
                         <MenuItem key={option.name} value={option.name}>
                             {option.name}
+                        </MenuItem>
+                    ))}
+                </TextField>
+                <TextField
+                    id="Full Area"
+                    select
+                    label="Seleccione la sub-area"
+                    onChange={handleChangeSubAreaDest}
+                    disabled={destino===""}
+                    helperText="Seleccione el subarea a donde se translada el paciente"
+                >
+                    {[1,2,3,4].map((index) => (
+                        <MenuItem key={index} value={destino.slice(0,3)+index}>
+                            {destino.slice(0,3)+index}
                         </MenuItem>
                     ))}
                 </TextField>
