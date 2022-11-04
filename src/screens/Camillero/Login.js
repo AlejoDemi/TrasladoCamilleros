@@ -26,7 +26,14 @@ export const Login = () =>{
         setCamillero(event.target.value);
     };
 
-   return (
+    const submit = () => {
+        if (camillero != ""){
+            localStorage.setItem("camillero", camillero);
+        }
+        // sets the value of "message" to be "saved in browser storage"
+    }
+
+    return (
        camilleros &&
        <Box
            component="form"
@@ -59,7 +66,7 @@ export const Login = () =>{
            </div>
            <div>
 
-               <Button >SUBMIT</Button>
+               <Button onClick={submit} >SUBMIT</Button>
 
            </div>
        </Box>
