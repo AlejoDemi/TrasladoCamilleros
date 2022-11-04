@@ -25,12 +25,11 @@ export const Traslados = () => {
         })
     },[setTimeout(3000)])
 
-    const getColor=(urgency)=>{
-        if(urgency==="LOW")return "#25ff2f"
-        else if(urgency==="MEDIUM")return "#fff200"
+    const getColor=(status)=>{
+        if(status==="EN COURSE")return "#25ff2f"
+        else if(status==="ACCEPTED")return "#fff200"
         return "#ff2a22"
     }
-
 
         return (
             <div style={{height:"80vh",overflowY:"auto",overflowX:"hidden"}}>

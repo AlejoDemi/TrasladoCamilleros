@@ -5,11 +5,12 @@ import {Camillero} from "./screens/Camillero/Camillero";
 import {TabsDoctor} from "./screens/Doctor/TabsDoctor";
 import {CamilleroSinNotificaciones} from "./screens/Camillero/CamilleroSinNotificaciones";
 import {ChequeoDePaciente} from "./screens/Camillero/ChequeoDePaciente";
+import {Login} from "./screens/Camillero/Login";
 
 function App() {
   return (
     <div className="App">
-        <TabsDoctor/>
+        <Login/>
     </div>
   );
 }
