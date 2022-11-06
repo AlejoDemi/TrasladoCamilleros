@@ -3,11 +3,12 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import {Button, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
-import {toast} from "react-toastify";
 import Box from "@mui/material/Box";
 import {listaOrigenesYDestino} from "../Doctor/Arreglos";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () =>{
+    const navigate=useNavigate()
 
     const [camilleros, setCamilleros] = useState([]);
     const [camillero, setCamillero] = useState();
@@ -29,6 +30,7 @@ export const Login = () =>{
     const submit = () => {
         if (camillero != ""){
             localStorage.setItem("camillero", camillero);
+            navigate("/camillero")
         }
         // sets the value of "message" to be "saved in browser storage"
     }
@@ -57,7 +59,7 @@ export const Login = () =>{
                    helperText="Seleccione su identidad"
                >
                    {camilleros.map((option) => (
-                       <MenuItem key={option.name} value={option.name}>
+                       <MenuItem key={option.id} value={option.id}>
                            {option.name}
                        </MenuItem>
                    ))}

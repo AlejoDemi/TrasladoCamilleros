@@ -1,7 +1,22 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export const ChequeoDePaciente = () => {
+
+    const navigate=useNavigate()
+
+const startDrive=()=>{
+    axios.put(`https://backcamilleros-production.up.railway.app/request/start/${window.localStorage.getItem("requestId")}`)
+    .then(()=>{
+        navigate("/trasladoTerminado")
+        
+    }).catch((error)=>{
+    console.log(error)
+    })
+}
+
     return (
         <div style={{display:"flex", flexDirection:"column",backgroundImage:"url:https://blog.laboralkutxa.com/src/uploads/2018/05/Reconocimiento-facial.jpg"}}>
             <h1> ¿Identifico al paciente correcto? </h1>
@@ -11,7 +26,7 @@ export const ChequeoDePaciente = () => {
                 }
             </div>
 
-            <Button variant="contained" color="success">
+            <Button variant="contained" color="success" style={{width:"100px",margin:"auto"}} onClick={startDrive}>
                 SI
             </Button>
 

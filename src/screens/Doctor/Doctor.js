@@ -5,7 +5,6 @@ import MenuItem from '@mui/material/MenuItem';
 import {Button, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import axios from "axios";
 import {listaIDpaciente, listaNombrePaciente, listaOrigenesYDestino} from "./Arreglos";
-import {toast, ToastContainer} from "react-toastify";
 
 export const Doctor = () => {
     const [origen, setOrigen] = useState("");
@@ -174,7 +173,7 @@ console.log(!!origen)
                     <FormControlLabel value="HIGH" control={<Radio />} label="3" />
                 </RadioGroup>
 
-                <Button onClick={toast}>SUBMIT</Button>
+                <Button onClick={sendRequest}>SUBMIT</Button>
 
             </div>
         </Box>
