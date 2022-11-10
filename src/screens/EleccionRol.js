@@ -13,7 +13,7 @@ export const EleccionRol = () =>{
         </div>
         <div style={{height:"70%",width:"30%",margin:"auto",border:"2px solid black",borderRadius:"20px",cursor:"pointer",overflow:"hidden"}}
                  onClick={()=>navigate("/login")}>
-            <img style={{height:"400px"}}
+            <img style={{height:"400px", maxWidth: "100%"}}
              src="https://us.123rf.com/450wm/classicvector/classicvector1905/classicvector190500058/130274516-paciente-en-la-ilustraci%C3%B3n-de-vector-plano-camilla-m%C3%A9dicos-de-emergencia-ayudando-al-hombre-inconsci.jpg?ver=6"/>
              <h1 style={{marginTop:"100px"}}>CAMILLERO</h1>
         </div>
