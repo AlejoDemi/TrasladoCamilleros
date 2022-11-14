@@ -62,10 +62,10 @@ export const Camillero = () => {
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             {requests[index].patientId}
           </Typography>
-          <Typography variant="body2">
-            origen: {requests[index].areaFrom}
+          <Typography sx={{ mb: 3 }}  variant="body2">
+            ORIGEN: {requests[index].areaFrom}
             <br />
-            destino: {requests[index].areaTo}
+            DESTINO: {requests[index].areaTo}
           </Typography>
 
           <Button variant="contained" color="success" onClick={acceptRequest}>

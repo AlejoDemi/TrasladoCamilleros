@@ -108,7 +108,7 @@ console.log(!!origen)
                     label="Seleccione la sub-area"
                     onChange={handleChangeSubAreaOri}
                     disabled={origen===""}
-                    helperText="Seleccione el subarea a donde se busca el paciente"
+                    helperText="Seleccione el subarea a origen, en caso de que no seleccione nada sera el cuarto del paciente selecionado"
                 >
                     {[1,2,3,4].map((index) => (
                         <MenuItem key={index} value={origen.slice(0,3)+index}>
@@ -135,7 +135,7 @@ console.log(!!origen)
                     label="Seleccione la sub-area"
                     onChange={handleChangeSubAreaDest}
                     disabled={destino===""}
-                    helperText="Seleccione el subarea a donde se translada el paciente"
+                    helperText="Seleccione el subarea a destino, en caso de que no seleccione nada sera el cuarto del paciente selecionado"
                 >
                     {[1,2,3,4].map((index) => (
                         <MenuItem key={index} value={destino.slice(0,3)+index}>

@@ -2,6 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 export const ChequeoDePaciente = () => {
 
