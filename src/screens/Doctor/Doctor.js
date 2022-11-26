@@ -16,7 +16,7 @@ export const Doctor = () => {
     const [subAreaOri, setSubAreaOri] = useState([]);
 
     useEffect(()=>{
-        axios.get("https://backcamilleros-production.up.railway.app/patients")
+        axios.get("https://soy-jugaso.up.railway.app/patients")
             .then((res)=>{
                 console.log(res)
                 setPacientes(res.data)
@@ -29,7 +29,7 @@ console.log(!!origen)
 
     const sendRequest = ()=>{
         if(!!IDpaciente){
-            axios.post("https://backcamilleros-production.up.railway.app/request",
+            axios.post("https://soy-jugaso.up.railway.app/request",
             {
                 areaFrom : !subAreaOri ? IDpaciente.room : subAreaOri,
                 areaTo : !subAreaDest ? IDpaciente.room : subAreaDest,

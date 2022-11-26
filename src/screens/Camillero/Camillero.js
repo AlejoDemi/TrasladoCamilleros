@@ -18,7 +18,7 @@ export const Camillero = () => {
     const [index,setIndex]=useState(0);
 
     useEffect(()=>{
-        axios.get("https://backcamilleros-production.up.railway.app/requests")
+        axios.get("https://soy-jugaso.up.railway.app/requests")
         .then((res)=>{
             
             setRequests(res.data.filter(filterByStatus))
@@ -39,7 +39,7 @@ export const Camillero = () => {
     }
 
     const acceptRequest =()=>{
-      axios.put(`https://backcamilleros-production.up.railway.app/request/accept/${requests[index].id}`)
+      axios.put(`https://soy-jugaso.up.railway.app/request/accept/${requests[index].id}`)
       .then(()=>{
           window.localStorage.setItem("requestId",requests[index].id)
           navigate("/reconocerPaciente")

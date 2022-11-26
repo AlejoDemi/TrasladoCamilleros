@@ -8,7 +8,7 @@ export const TrasladoTerminado = () => {
     const navigate = useNavigate()
 
     const finishDrive =()=>{
-         axios.put(`https://backcamilleros-production.up.railway.app/request/close/${window.localStorage.getItem("requestId")}`)
+         axios.put(`https://soy-jugaso.up.railway.app/request/close/${window.localStorage.getItem("requestId")}`)
       .then(()=>{
           navigate("/camillero")
           

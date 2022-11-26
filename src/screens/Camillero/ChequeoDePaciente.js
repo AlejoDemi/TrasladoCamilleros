@@ -9,7 +9,7 @@ export const ChequeoDePaciente = () => {
     const navigate=useNavigate()
 
 const startDrive=()=>{
-    axios.put(`https://backcamilleros-production.up.railway.app/request/start/${window.localStorage.getItem("requestId")}`)
+    axios.put(`https://soy-jugaso.up.railway.app/request/start/${window.localStorage.getItem("requestId")}`)
     .then(()=>{
         navigate("/trasladoTerminado")
         
